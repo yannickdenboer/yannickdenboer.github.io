@@ -769,6 +769,8 @@ footer {
   .hero-right {
     max-width: 280px;
   }
+  .geo-shape { display: none; }
+  #nn-canvas { display: none; }
 
   .projects-grid {
     grid-template-columns: 1fr;

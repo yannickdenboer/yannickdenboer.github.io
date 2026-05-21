@@ -19,11 +19,13 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  hideFooter?: boolean;
 }
 
 const {
   title = 'Yannick den Boer — AI Engineer',
   description = 'AI Engineer, Teacher & Enthusiast. Training professionals in applied AI, prompt engineering, and Python.',
+  hideFooter = false,
 } = Astro.props;
 ---
 
@@ -48,7 +50,7 @@ const {
   <!-- Each page's content gets inserted here -->
   <slot />
 
-  <Footer />
+  {!hideFooter && <Footer />}
 
   <!-- Scroll reveal: makes sections fade in as you scroll down -->
   <script>

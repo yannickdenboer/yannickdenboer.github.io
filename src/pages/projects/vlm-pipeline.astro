@@ -9,8 +9,8 @@
   4. That's it! The URL will be /projects/my-new-project/
 */
 
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Nav from '../../components/Nav.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
 ---
 
 <BaseLayout title="VLM Pipeline — Yannick den Boer">
@@ -19,7 +19,7 @@ import Nav from '../../components/Nav.astro';
   <div class="project-page">
     <a href="/" class="project-page-back">&larr; Back to home</a>
 
-    <h1>Vision-Language Model Pipeline for Behavioral Cue Classification</h1>
+    <h1>Thesis Dissertation</h1>
 
     <div class="project-page-meta">
       <span class="tag accent">VLM</span>
@@ -31,25 +31,43 @@ import Nav from '../../components/Nav.astro';
 
     <div class="project-page-content">
       <p>
-        This was my MSc AI thesis project at Utrecht University, conducted in collaboration with UMC Utrecht's neonatal department. The goal was to explore whether modern Vision-Language Models could automatically classify behavioral cues in preterm infants from video recordings.
+        This was my MSc AI thesis project at Utrecht University, conducted in
+        collaboration with UMC Utrecht's neonatal department. The goal was to
+        explore whether modern Vision-Language Models could automatically
+        classify behavioral cues in preterm infants from video recordings.
       </p>
 
       <h2>The Problem</h2>
       <p>
-        Clinical assessment of preterm infant behavior is currently done manually by trained observers. This process is time-consuming and subjective. Automating parts of this assessment could help clinicians work faster and more consistently.
+        Clinical assessment of preterm infant behavior is currently done
+        manually by trained observers. This process is time-consuming and
+        subjective. Automating parts of this assessment could help clinicians
+        work faster and more consistently.
       </p>
 
       <h2>My Approach</h2>
       <ul>
-        <li>Designed a multi-stage pipeline: video preprocessing with OpenCV, frame extraction, and VLM-based classification</li>
-        <li>Evaluated multiple Vision-Language Models from HuggingFace for their ability to interpret clinical video frames</li>
+        <li>
+          Designed a multi-stage pipeline: video preprocessing with OpenCV,
+          frame extraction, and VLM-based classification
+        </li>
+        <li>
+          Evaluated multiple Vision-Language Models from HuggingFace for their
+          ability to interpret clinical video frames
+        </li>
         <li>Built custom data loaders and evaluation metrics in PyTorch</li>
-        <li>Worked closely with clinical staff to validate the approach against expert annotations</li>
+        <li>
+          Worked closely with clinical staff to validate the approach against
+          expert annotations
+        </li>
       </ul>
 
       <h2>Results</h2>
       <p>
-        The pipeline showed promising results for certain behavioral cue categories, demonstrating that VLMs can extract clinically relevant information from neonatal video recordings. The work contributed to ongoing research at UMC Utrecht's neonatal care unit.
+        The pipeline showed promising results for certain behavioral cue
+        categories, demonstrating that VLMs can extract clinically relevant
+        information from neonatal video recordings. The work contributed to
+        ongoing research at UMC Utrecht's neonatal care unit.
       </p>
     </div>
   </div>

@@ -19,8 +19,12 @@ interface Props {
   tags: string[];       // e.g. ["Python", "PyTorch"]
   accentTag?: string;   // the highlighted tag (e.g. "VLM")
   featured?: boolean;   // true = large card spanning 2 rows
-  href?: string;        // link to project detail page
+  href?: string;        // link to project detail page or downloadable file
   thumbSvg?: string;    // SVG markup for the thumbnail icon
+  thumbImg?: string;    // image src for a framed photo/screenshot thumbnail
+  thumbAlt?: string;    // alt text for the image thumbnail
+  download?: boolean;   // if true and href is set, render <a download>
+  external?: boolean;   // if true, open href in a new tab
 }
 
 const {
@@ -32,18 +36,37 @@ const {
   featured = false,
   href,
   thumbSvg,
+  thumbImg,
+  thumbAlt,
+  download = false,
+  external = false,
 } = Astro.props;
 
 const Tag = href ? 'a' : 'div';
+const linkAttrs = href
+  ? {
+      href,
+      ...(download ? { download: '' } : {}),
+      ...(external || download ? { target: '_blank', rel: 'noopener noreferrer' } : {}),
+    }
+  : {};
 ---
 
 <Tag
   class:list={['project-card', { featured }]}
-  {...(href ? { href } : {})}
+  {...linkAttrs}
 >
-  <div class:list={['card-thumb', featured ? 'featured-thumb' : 'sm-thumb']}>
-    <div class="thumb-pattern"></div>
-    {thumbSvg && <Fragment set:html={thumbSvg} />}
+  <div class:list={['card-thumb', featured ? 'featured-thumb' : 'sm-thumb', { 'has-image': !!thumbImg }]}>
+    {thumbImg ? (
+      <div class="thumb-frame">
+        <img src={thumbImg} alt={thumbAlt ?? ''} loading="lazy" />
+      </div>
+    ) : (
+      <>
+        <div class="thumb-pattern"></div>
+        {thumbSvg && <Fragment set:html={thumbSvg} />}
+      </>
+    )}
   </div>
   <div class:list={['card-body', { sm: !featured }]}>
     <span class="card-org">{org}</span>

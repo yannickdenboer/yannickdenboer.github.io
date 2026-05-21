@@ -376,6 +376,46 @@ nav {
     );
 }
 
+/* image (screenshot) thumbnail — framed, paper-like.
+   Frame fills the full thumb height (no top/bottom filler), square aspect,
+   so it shows roughly the top ~70% of an A4 portrait page via object-fit: cover.
+   The dark warm gray surround picks up the contact-section palette. */
+.card-thumb.has-image {
+  background: #2a2a28;
+  padding: 8px 0 0;  /* dark-gray mat above the frame */
+  align-items: flex-start;
+}
+
+.thumb-frame {
+  position: relative;
+  height: 150%;
+  aspect-ratio: 1 / 1;
+  max-width: 150%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.25),
+    0 10px 28px rgba(0,0,0,0.35);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.thumb-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.project-card:hover .thumb-frame {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.3),
+    0 14px 36px rgba(0,0,0,0.45);
+}
+
 .card-body {
   padding: 20px 22px;
   flex: 1;

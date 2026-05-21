@@ -1,0 +1,69 @@
+---
+/*
+  thesis.astro — Inline viewer for the MSc thesis PDF.
+
+  Lives at /projects/thesis/ and embeds the PDF (which is served from
+  /public/thesis-yannick-den-boer.pdf) using an <iframe>. The browser's
+  built-in PDF viewer handles zoom, page navigation, and downloading.
+*/
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+
+const pdfUrl = '/thesis-yannick-den-boer.pdf';
+---
+
+<BaseLayout title="MSc Thesis — Yannick den Boer" hideFooter>
+  <Nav />
+
+  <div class="thesis-viewer">
+    <div class="thesis-viewer-bar">
+      <a href="/#projects" class="project-page-back">&larr; Back to projects</a>
+      <a href={pdfUrl} download class="btn-secondary thesis-download">
+        Download PDF
+      </a>
+    </div>
+
+    <iframe
+      src={pdfUrl}
+      title="MSc Thesis — Cue Classification in Preterm Infants Using Vision-Language Models"
+      class="thesis-frame"
+    ></iframe>
+  </div>
+</BaseLayout>
+
+<style>
+  .thesis-viewer {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 16px clamp(16px, 4vw, 60px) 24px;
+  }
+
+  .thesis-viewer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .thesis-viewer-bar .project-page-back {
+    margin-bottom: 0;
+  }
+
+  .thesis-download {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .thesis-frame {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-warm);
+  }
+</style>

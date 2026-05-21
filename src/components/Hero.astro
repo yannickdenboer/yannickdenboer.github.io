@@ -9,9 +9,9 @@
   - Change the "Currently at" info: edit the hero-meta items
 */
 
-import { Image } from 'astro:assets';
-import NeuralNetwork from './NeuralNetwork.astro';
-import profileImg from '../assets/profile.png';
+import { Image } from "astro:assets";
+import NeuralNetwork from "./NeuralNetwork.astro";
+import profileImg from "../assets/profile.png";
 ---
 
 <div id="hero-wrap">
@@ -20,14 +20,16 @@ import profileImg from '../assets/profile.png';
     <NeuralNetwork />
 
     <div class="hero-left" style="position:relative;z-index:1;">
-      <span class="hero-eyebrow">AI Engineer · Amsterdam, NL</span>
+      <span class="hero-eyebrow">AI Engineer · Utrecht, NL</span>
       <h1 class="hero-title">
         AI Engineer,<br />
         <em>Teacher</em> &amp;<br />
         Enthusiast.
       </h1>
       <p class="hero-bio">
-        I train professionals in applied AI, prompt engineering, and Python at CodeCafé. I work well independently and in teams, and I care about doing things properly.
+        I train professionals in applied AI, prompt engineering, and Python at
+        CodeCafé. I work well independently and in teams, and I care about doing
+        things properly.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Get in touch &nbsp;&rarr;</a>
@@ -37,7 +39,12 @@ import profileImg from '../assets/profile.png';
 
     <div class="hero-right" style="position:relative;z-index:1;">
       <div class="geo-shape">
-        <Image src={profileImg} alt="Yannick den Boer" width={360} height={360} />
+        <Image
+          src={profileImg}
+          alt="Yannick den Boer"
+          width={360}
+          height={360}
+        />
       </div>
       <div class="hero-meta">
         <div class="hero-meta-item">

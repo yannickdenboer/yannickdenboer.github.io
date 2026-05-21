@@ -1,0 +1,51 @@
+---
+/*
+  Nav.astro — Sticky navigation bar.
+
+  HOW TO MODIFY:
+  - Add new links: add another <li><a href="#section-id">Label</a></li>
+  - Change the logo text: edit the <span class="nav-logo"> below
+  - The nav stays at the top as you scroll (position: sticky in CSS)
+*/
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Yannick den Boer</a>
+
+    <!-- Mobile hamburger button (hidden on desktop, shown on mobile via CSS) -->
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="/#projects">projects</a></li>
+      <li><a href="/#stack">stack</a></li>
+      <li><a href="/#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const hamburger = document.querySelector('.nav-hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.contains('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

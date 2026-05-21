@@ -1,0 +1,63 @@
+# GitHub Actions workflow: Build & Deploy to GitHub Pages
+#
+# HOW IT WORKS:
+# 1. When you push to the "main" branch, this workflow runs automatically
+# 2. It installs Node.js and your project dependencies
+# 3. It runs "astro build" to generate the static HTML/CSS/JS files
+# 4. It uploads those files to GitHub Pages
+#
+# SETUP REQUIRED (one time):
+# 1. Go to your repo on GitHub → Settings → Pages
+# 2. Under "Source", select "GitHub Actions"
+# 3. Push your code — the workflow will deploy automatically
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,46 @@
+---
+import { Icon } from 'astro-icon/components';
+/*
+  TechStack.astro — "Tools I reach for" section with icon grid.
+
+  HOW TO ADD A NEW TOOL:
+  - Add a new object to the `tools` array below with { name, icon }.
+  - The icon field is an Iconify name (browse at icon-sets.iconify.design).
+  - The grid auto-adjusts to fit.
+*/
+
+const tools = [
+  { name: 'Python', icon: 'logos:python' },
+  { name: 'C#', icon: 'logos:c-sharp' },
+  { name: 'PyTorch', icon: 'logos:pytorch-icon' },
+  { name: 'HuggingFace', icon: 'logos:hugging-face-icon' },
+  { name: 'OpenCV', icon: 'logos:opencv' },
+  { name: 'NumPy', icon: 'logos:numpy' },
+  { name: 'Pandas', icon: 'logos:pandas-icon' },
+];
+---
+
+<section id="stack" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-title">Tech Stack</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="stack-grid reveal">
+      <div class="stack-intro">
+        <h2>Tools I<br />reach for.</h2>
+        <p>A focused set of tools I use to build, train, and ship AI solutions — from data wrangling to model deployment.</p>
+      </div>
+      <div class="stack-items">
+        {tools.map(tool => (
+          <div class="stack-item">
+            <div class="stack-icon">
+              <Icon name={tool.icon} />
+            </div>
+            <span class="stack-name">{tool.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

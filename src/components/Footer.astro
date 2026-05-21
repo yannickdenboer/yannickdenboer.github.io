@@ -1,0 +1,18 @@
+---
+/*
+  Footer.astro — Simple dark footer with name and tagline.
+
+  HOW TO MODIFY:
+  - Change the year: it auto-updates via JavaScript (see below)
+  - Change the text: edit the spans below
+*/
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Yannick den Boer · {year}</span>
+    <span class="footer-copy">AI Engineer · Amsterdam, NL</span>
+  </div>
+</footer>

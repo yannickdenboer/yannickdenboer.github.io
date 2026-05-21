@@ -1,0 +1,91 @@
+---
+import { Icon } from "astro-icon/components";
+/*
+  Contact.astro — Dark contact section with email + social links.
+
+  HOW TO MODIFY:
+  - Change email: update the mailto: links and display text below
+  - Add/remove social links: edit the links array
+  - Change the headline: edit the <h2> text
+*/
+---
+
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="contact-inner reveal">
+      <div class="contact-left">
+        <span class="contact-eyebrow">Let's connect</span>
+        <h2 class="contact-headline">
+          Got a project<br />
+          in <em>mind</em>?
+        </h2>
+        <p class="contact-sub">
+          Whether you want to talk AI, hire me for training, or collaborate on
+          something interesting — I'd love to hear from you.
+        </p>
+        <a
+          href="mailto:yannick.denboer@vangoghstraat.com"
+          class="contact-email"
+        >
+          yannick.denboer@vangoghstraat.com &nbsp;&nearr;
+        </a>
+      </div>
+
+      <div class="contact-right">
+        <!-- Email -->
+        <a href="mailto:yannick.denboer@vangoghstraat.com" class="contact-link">
+          <div class="contact-link-label">
+            <div class="contact-link-icon">
+              <Icon name="lucide:mail" color="#888" />
+            </div>
+            <div>
+              <div>Email me</div>
+              <div class="contact-link-sub">
+                yannick.denboer@vangoghstraat.com
+              </div>
+            </div>
+          </div>
+          <span class="contact-link-arrow">&nearr;</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener"
+          class="contact-link"
+        >
+          <div class="contact-link-label">
+            <div class="contact-link-icon">
+              <Icon name="simple-icons:linkedin" color="#888" />
+            </div>
+            <div>
+              <div>LinkedIn</div>
+              <div class="contact-link-sub">Connect with me professionally</div>
+            </div>
+          </div>
+          <span class="contact-link-arrow">&nearr;</span>
+        </a>
+
+        <!-- GitHub -->
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener"
+          class="contact-link"
+        >
+          <div class="contact-link-label">
+            <div class="contact-link-icon">
+              <Icon name="simple-icons:github" color="#888" />
+            </div>
+            <div>
+              <div>GitHub</div>
+              <div class="contact-link-sub">See what I've been working on</div>
+            </div>
+          </div>
+          <span class="contact-link-arrow">&nearr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

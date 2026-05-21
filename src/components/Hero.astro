@@ -1,0 +1,61 @@
+---
+/*
+  Hero.astro — The big hero section with your name, title, bio, and photo.
+
+  HOW TO MODIFY:
+  - Change your name/title: edit the <h1> below
+  - Change the bio text: edit the <p class="hero-bio">
+  - Change the profile image: replace src/assets/profile.png
+  - Change the "Currently at" info: edit the hero-meta items
+*/
+
+import { Image } from 'astro:assets';
+import NeuralNetwork from './NeuralNetwork.astro';
+import profileImg from '../assets/profile.png';
+---
+
+<div id="hero-wrap">
+  <section id="hero">
+    <!-- Animated neural network canvas background -->
+    <NeuralNetwork />
+
+    <div class="hero-left" style="position:relative;z-index:1;">
+      <span class="hero-eyebrow">AI Engineer · Amsterdam, NL</span>
+      <h1 class="hero-title">
+        AI Engineer,<br />
+        <em>Teacher</em> &amp;<br />
+        Enthusiast.
+      </h1>
+      <p class="hero-bio">
+        I train professionals in applied AI, prompt engineering, and Python at CodeCafé. I work well independently and in teams, and I care about doing things properly.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in touch &nbsp;&rarr;</a>
+        <a href="#projects" class="btn-secondary">See my work</a>
+      </div>
+    </div>
+
+    <div class="hero-right" style="position:relative;z-index:1;">
+      <div class="geo-shape">
+        <Image src={profileImg} alt="Yannick den Boer" width={360} height={360} />
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="meta-dot"></div>
+          <span class="meta-label">Currently at</span>
+          <span class="meta-value">CodeCafé · AI Trainer</span>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-dot dim"></div>
+          <span class="meta-label">MSc AI</span>
+          <span class="meta-value">Utrecht University</span>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-dot dim"></div>
+          <span class="meta-label">Based in</span>
+          <span class="meta-value">The Netherlands</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

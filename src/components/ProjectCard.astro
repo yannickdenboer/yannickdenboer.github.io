@@ -1,0 +1,58 @@
+---
+/*
+  ProjectCard.astro — A reusable project card component.
+
+  HOW PROPS WORK:
+  - Props are data you pass to a component when you use it.
+  - In the parent page, you write: <ProjectCard title="My Project" ... />
+  - Here, we read those values from Astro.props.
+
+  HOW TO ADD A NEW PROJECT:
+  - In index.astro, add another <ProjectCard ... /> with your project's data.
+  - Set featured={true} for the large card, or leave it off for small cards.
+*/
+
+interface Props {
+  title: string;
+  org: string;
+  description: string;
+  tags: string[];       // e.g. ["Python", "PyTorch"]
+  accentTag?: string;   // the highlighted tag (e.g. "VLM")
+  featured?: boolean;   // true = large card spanning 2 rows
+  href?: string;        // link to project detail page
+  thumbSvg?: string;    // SVG markup for the thumbnail icon
+}
+
+const {
+  title,
+  org,
+  description,
+  tags,
+  accentTag,
+  featured = false,
+  href,
+  thumbSvg,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  class:list={['project-card', { featured }]}
+  {...(href ? { href } : {})}
+>
+  <div class:list={['card-thumb', featured ? 'featured-thumb' : 'sm-thumb']}>
+    <div class="thumb-pattern"></div>
+    {thumbSvg && <Fragment set:html={thumbSvg} />}
+  </div>
+  <div class:list={['card-body', { sm: !featured }]}>
+    <span class="card-org">{org}</span>
+    <h3 class:list={['card-title', { sm: !featured }]}>{title}</h3>
+    <p class="card-desc">{description}</p>
+    <div class="card-tags">
+      {accentTag && <span class="tag accent">{accentTag}</span>}
+      {tags.map(tag => <span class="tag">{tag}</span>)}
+    </div>
+    {href && <span class="card-arrow">&nearr;</span>}
+  </div>
+</Tag>
